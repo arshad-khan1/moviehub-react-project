@@ -45,7 +45,7 @@ const Header = ({ data }) => {
             <p className="w-[70%] text-white text-md font-light tracking-normal max-h-[18vh] overflow-hidden text-ellipsis">
               {data.overview?.slice(0, 200)}...
               <Link
-                to={`/${data.media_type || title}/details/${data.id}`}
+                to={`/${data.media_type}/details/${data.id}`}
                 className="text-[#6556CD]"
               >
                 {" "}

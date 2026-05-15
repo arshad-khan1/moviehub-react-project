@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Sidenav = () => {
@@ -7,7 +6,9 @@ const Sidenav = () => {
   return (
     <div className="w-[17vw] h-screen border-r-2 border-zinc-700 text-zinc-400 p-5">
       <div className="text-[2vw] flex gap-3 font-bold items-center text-white">
-        <Link to={"/"} className="ri-tv-2-fill text-[#6556CD]"></Link>
+        <Link to={"/"} className="w-10 h-10">
+          <img className="w-full h-full object-contain" src="/logo.png" alt="MovieHub Logo" />
+        </Link>
         <Link to={"/"} className="mb-1">MovieHub</Link>
       </div>
       <div className="flex flex-col justify-between h-[85vh] text-[1.1vw]">

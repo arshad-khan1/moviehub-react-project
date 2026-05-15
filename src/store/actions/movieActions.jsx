@@ -3,7 +3,7 @@ import axios from "../../utils/axios";
 import { loadmovie } from "../reducers/movieSlice";
 
 //action is to extract data from the api
-export const asyncloadmovie = (id) => async (dispatch, getState) => {
+export const asyncloadmovie = (id) => async (dispatch) => {
     try {
         const [
             detail,
@@ -30,7 +30,7 @@ export const asyncloadmovie = (id) => async (dispatch, getState) => {
             externalid: externalid.data,
             recommendations: recommendations.data.results,
             similar: similar.data.results,
-            videos: videos.data.results.find((m) => m.type === "Trailer"),
+            videos: videos.data.results?.find((m) => m.type === "Trailer" && (m.site === "YouTube" || m.site === "Vimeo")) || videos.data.results?.find((m) => m.site === "YouTube" || m.site === "Vimeo") || videos.data.results?.[0],
             watchproviders: watchproviders.data.results.IN,
             credits: credits.data,
             translations: translations.data,
