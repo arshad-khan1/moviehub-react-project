@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import { asyncloadmovie, removemovie } from "../store/actions/movieActions";
 import HorizontalCards from "./partials/HorizontalCards";
 import Casts from "./partials/Casts";
+import Loading from "./partials/Loading";
 
 const Moviedetails = () => {
   const navigate = useNavigate();
@@ -229,7 +230,7 @@ const Moviedetails = () => {
       <Outlet />
     </div>
   ) : (
-    <h1 className="text-white text-4xl font-bold">Loading</h1>
+    <Loading />
   );
 };
 

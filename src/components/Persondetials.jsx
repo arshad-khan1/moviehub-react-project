@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { asyncloadperson, removeperson } from "../store/actions/personActions";
 import Dropdown from "./partials/Dropdown";
 import HorizontalCards from "./partials/HorizontalCards";
+import Loading from "./partials/Loading";
 import nophoto from "/nophoto.jpg";
 
 const Persondetials = () => {
@@ -172,7 +173,7 @@ const Persondetials = () => {
       </div>
     </div>
   ) : (
-    <h1 className="text-white text-4xl font-bold">Loading</h1>
+    <Loading />
   );
 };
 

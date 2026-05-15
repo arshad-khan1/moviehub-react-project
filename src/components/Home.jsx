@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Sidenav from "./partials/Sidenav";
 import Topnav from "./partials/Topnav";
 import Header from "./partials/Header";
 import axios from "../utils/axios";
 import HorizontalCards from "./partials/HorizontalCards";
 import Dropdown from "./partials/Dropdown";
+import Loading from "./partials/Loading";
 
 const Home = () => {
   document.title = "MovieApp | Home";
@@ -16,7 +17,7 @@ const Home = () => {
   const GetWallpaper = async () => {
     try {
       const { data } = await axios.get("/trending/all/day");
-      let randomdata = (Math.random() * data.results.length).toFixed();
+      let randomdata = Math.floor(Math.random() * data.results.length);
       setwallpaper(data.results[randomdata]);
     } catch (error) {
       console.log(error);
@@ -67,7 +68,7 @@ const Home = () => {
       </div>
     </div>
   ) : (
-    <h1 className="text-white text-xl font-bold">Loading</h1>
+    <Loading />
   );
 };
 

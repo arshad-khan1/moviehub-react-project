@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Topnav from "./partials/Topnav";
 import Dropdown from "./partials/Dropdown";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Cards from "./partials/Cards";
 import axios from "../utils/axios";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from "./partials/Loading";
 
 const Trending = () => {
   document.title = "MovieHub | Trending";
@@ -14,7 +15,7 @@ const Trending = () => {
   const [category, setcategory] = useState("all");
   const [duration, setduration] = useState("day");
   const [page, setpage] = useState(1);
-  const [hasMore, sethasMore] = useState(true);
+  const [sethasMore] = useState(true);
 
   const GetTrending = async () => {
     try {
@@ -34,14 +35,14 @@ const Trending = () => {
   };
 
   const refreshHandler = () => {
-    if(trending.length === 0){
+    if (trending.length === 0) {
       GetTrending();
-    }else{
+    } else {
       setpage(1);
       settrending([]);
-      GetTrending();
+      // The useEffect will trigger GetTrending when category/duration change
     }
-  }
+  };
 
   useEffect(() => {
     refreshHandler();
@@ -74,9 +75,7 @@ const Trending = () => {
         dataLength={trending.length}
         next={GetTrending}
         hasMore={true}
-        loader={
-          <h4 className="text-white text-2xl font-semibold">Loading...</h4>
-        }
+        loader={<Loading />}
       >
         <div className="">
           {/* Cards */}
@@ -85,7 +84,7 @@ const Trending = () => {
       </InfiniteScroll>
     </div>
   ) : (
-    <h1 className="text-white text-xl font-bold">Loading</h1>
+    <Loading />
   );
 };
 

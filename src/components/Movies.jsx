@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Topnav from "./partials/Topnav";
 import Dropdown from "./partials/Dropdown";
 import { Link, useNavigate } from "react-router-dom";
 import Cards from "./partials/Cards";
 import axios from "../utils/axios";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from "./partials/Loading";
 
 
 const Movies = () => {
@@ -34,14 +35,13 @@ const Movies = () => {
       };
     
       const refreshHandler = () => {
-        if(movies.length === 0){
+        if (movies.length === 0) {
           Getmovies();
-        }else{
+        } else {
           setpage(1);
           setmovies([]);
-          Getmovies();
         }
-      }
+      };
     
       useEffect(() => {
         refreshHandler();
@@ -69,9 +69,7 @@ const Movies = () => {
             dataLength={movies.length}
             next={Getmovies}
             hasMore={hasMore}
-            loader={
-              <h4 className="text-white text-2xl font-semibold">Loading...</h4>
-            }
+            loader={<Loading />}
           >
             <div className="">
               {/* Cards */}
@@ -80,7 +78,7 @@ const Movies = () => {
           </InfiniteScroll>
         </div>
       ) : (
-        <h1 className="text-white text-xl font-bold">Loading</h1>
+        <Loading />
       );
 }
 export default Movies;

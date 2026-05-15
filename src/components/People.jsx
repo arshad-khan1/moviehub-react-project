@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Cards from "./partials/Cards";
 import axios from "../utils/axios";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from "./partials/Loading";
 
 
 const People = () => {
@@ -33,14 +34,13 @@ const People = () => {
       };
     
       const refreshHandler = () => {
-        if(people.length === 0){
+        if (people.length === 0) {
           GetPeople();
-        }else{
+        } else {
           setpage(1);
           setpeople([]);
-          GetPeople();
         }
-      }
+      };
     
       useEffect(() => {
         refreshHandler();
@@ -63,9 +63,7 @@ const People = () => {
             dataLength={people.length}
             next={GetPeople}
             hasMore={true}
-            loader={
-              <h4 className="text-white text-2xl font-semibold">Loading...</h4>
-            }
+            loader={<Loading />}
           >
             <div className="">
               {/* Cards */}
@@ -74,7 +72,7 @@ const People = () => {
           </InfiniteScroll>
         </div>
       ) : (
-        <h1 className="text-white text-xl font-bold">Loading</h1>
+        <Loading />
       );
 }
 export default People;

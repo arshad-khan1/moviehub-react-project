@@ -1,13 +1,13 @@
-import React from 'react'
-import loading from "/loading.gif"
+import React from "react";
+import loading from "/loading.gif";
 
 const Loading = () => {
-  return (
-    <div className='relative w-screen h-screen flex items-center justify-center'>
-      <img className='' src={loading} alt="" />
-      {/* <h1 className='absolute text-zinc-300 text-[2vw] top-[15%] font-bold '>Your content is Loading</h1> */}
-    </div>
-  )
-}
+    return (
+        <div className="w-full h-full flex justify-center items-center bg-[#1F1E24]">
+            <img className="h-[50%] object-cover" src={loading} alt="Loading..." />
+        </div>
+    );
+};
 
-export default Loading
+export default Loading;
+
