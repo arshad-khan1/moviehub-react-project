@@ -17,7 +17,7 @@ const Cards = ({ data, title }) => {
               src={`https://image.tmdb.org/t/p/original/${
                 c.poster_path || c.backdrop_path || c.profile_path
                   ? c.poster_path || c.backdrop_path || c.profile_path
-                  : {nophoto}
+                  : nophoto
               }`}
               alt=""
             />

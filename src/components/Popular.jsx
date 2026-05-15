@@ -68,7 +68,7 @@ const Popular = () => {
           <InfiniteScroll
             dataLength={popular.length}
             next={GetPopular}
-            hasMore={true}
+            hasMore={hasMore}
             loader={<Loading />}
           >
             <div className="">

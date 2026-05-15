@@ -99,7 +99,7 @@ const Tvdetails = () => {
               {/*Launch Year*/}
               <span className="font-semibold">
                 <span className="text-[#6556CD]">Year : </span>{" "}
-                {info.detail.first_air_date.slice(0, 4)}
+                {info.detail.first_air_date?.slice(0, 4)}
               </span>{" "}
               {/*Seasons*/}
               <span className="font-semibold">

@@ -1,8 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = ({ data }) => {
-  console.log(data);
   return (
     <Link to={`/${data.media_type}/details/${data.id}`}>
       <div
@@ -25,7 +23,7 @@ const Header = ({ data }) => {
               {data.genre_ids}
             </h3>
             <div className="flex gap-5 items-center text-white text-xl font-semibold uppercase">
-              <span>{data.release_date.slice(0, 4)}</span>
+              <span>{(data.release_date || data.first_air_date)?.slice(0, 4)}</span>
 
               {data.media_type === "movie" ? (
                 <span>
@@ -45,7 +43,7 @@ const Header = ({ data }) => {
             </div>
 
             <p className="w-[70%] text-white text-md font-light tracking-normal max-h-[18vh] overflow-hidden text-ellipsis">
-              {data.overview.slice(0, 200)}...
+              {data.overview?.slice(0, 200)}...
               <Link
                 to={`/${data.media_type || title}/details/${data.id}`}
                 className="text-[#6556CD]"

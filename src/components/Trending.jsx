@@ -15,7 +15,7 @@ const Trending = () => {
   const [category, setcategory] = useState("all");
   const [duration, setduration] = useState("day");
   const [page, setpage] = useState(1);
-  const [sethasMore] = useState(true);
+  const [hasMore, sethasMore] = useState(true);
 
   const GetTrending = async () => {
     try {
@@ -74,7 +74,7 @@ const Trending = () => {
       <InfiniteScroll
         dataLength={trending.length}
         next={GetTrending}
-        hasMore={true}
+        hasMore={hasMore}
         loader={<Loading />}
       >
         <div className="">
